@@ -32,7 +32,7 @@ To use de API directly, the `JWT` need to be generated with the below payload fo
   {
     "origin": "adidas-challenge-subcription-service",
     "resource": "emails",
-    "timestamp": 1617895752000 // Need to be a timestamp in milliseconds at least 2 min before now timestamp
+    "timestamp": 1617895752000
   }
 }
 ```

@@ -1,0 +1,21 @@
+services:
+    api:
+        build: .
+        depends_on:
+            - mongo
+        ports:
+            - "3001:3001"
+        volumes:
+            - .:/subscription-service
+            - /subscription-service/node_modules
+
+    mongo:
+        image: mongo
+        restart: always
+        container_name: mongo_adidas
+        environment:
+            MONGO_INITDB_DATABASE: adidas
+            MONGO_INITDB_ROOT_USERNAME: adidas
+            MONGO_INITDB_ROOT_PASSWORD: adidas
+        ports:
+            - "27017:27017"

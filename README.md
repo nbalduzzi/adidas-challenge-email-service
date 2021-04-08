@@ -69,7 +69,7 @@ $ nvm use
 $ npm install
 ```
 
-## Running the app locally
+## Running the app
 
 ```bash
 # development
@@ -81,6 +81,8 @@ $ npm run start:dev # run on port 3002
 # production mode
 $ npm run start:prod # run on port 3002
 ```
+
+> Healt Check enpoint on `http://localhost:3002/ping`
 
 ## Test
 
@@ -107,7 +109,7 @@ $ docker run -p3002:3002 adidas-challenge-email-service
 
 ## Documentation
 
-Swagger documentation on dev instance: `http:localhost:3002/api`
+Swagger documentation only on dev instance: `http:localhost:3002/api`
 
 ## License
 

@@ -113,7 +113,11 @@ $ docker run -p3002:3002 adidas-challenge-email-service
 ### Docker Compose
 
 ```bash
+# Up containers
 $ docker-compose up
+
+# Clean and up containers
+$ docker-compose up --build --force-recreate
 ```
 
 ## Documentation

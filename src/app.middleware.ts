@@ -15,7 +15,7 @@ export class AuthorizationMiddleware implements NestMiddleware {
       !headers['authorization'] ||
       headers['authorization'].length === 0
     ) {
-      next(new ForbiddenException('authorization required'));
+      return next(new ForbiddenException('authorization required'));
     }
 
     const token: string = headers['authorization'].split(' ')[1];
@@ -31,18 +31,16 @@ export class AuthorizationMiddleware implements NestMiddleware {
         !decoded.resource ||
         !decoded.timestamp
       ) {
-        next(new UnauthorizedException('unauthorized'));
+        return next(new UnauthorizedException('unauthorized'));
       }
 
       if (Date.now() > decoded.timestamp + +process.env.MAX_REQUEST_MS_GAP) {
-        // 120000
-        next(new UnauthorizedException('unauthorized'));
+        return next(new UnauthorizedException('unauthorized'));
       }
 
-      next();
+      return next();
     } catch (e) {
-      console.error(e);
-      next(new UnauthorizedException('invalid token'));
+      return next(new UnauthorizedException('invalid token'));
     }
   }
 }

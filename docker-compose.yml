@@ -4,6 +4,3 @@ services:
         container_name: adidas-challenge-email-service
         ports:
             - "3002:3002"
-        volumes:
-            - .:/email-service
-            - /email-service/node_modules

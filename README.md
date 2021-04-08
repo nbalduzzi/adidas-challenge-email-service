@@ -6,7 +6,6 @@
 
 Adidas Challenge Email Service API
 
-
 ## Tech Stack
 
 **NodeJS version:** v12.12.0

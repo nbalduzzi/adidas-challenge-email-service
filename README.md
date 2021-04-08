@@ -17,7 +17,11 @@ Adidas Challenge Email Service API
 
 ## Considerations
 
-This service mocked by returning `randomly boolean` on sent mail success or fail status, `waiting 2 seconds` before response.
+1. This service mocked by returning `randomly boolean` on sent mail success or fail status, `waiting 2 seconds` before response.
+
+2. For the `e2e tests` the required token was handled on the same test file signing the jwt with the secret inside `.env.test` file because i didn't implement a Token Deliver API. I did this in order to follow the challenge instructions where asking to me for `3 microservices` and i don't know if i can create more services than asked to me.
+
+3. The expectation for e2e emails tests is only on `Content-Type` because i return a `random response` for challenge purpose.
 
 ## Security
 

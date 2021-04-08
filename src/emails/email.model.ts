@@ -8,6 +8,7 @@ export class EmailNotificationDTO {
     description: 'The subscriptor email',
     type: String,
     required: true,
+    example: 'jhon.doe@gmail.com',
   })
   email: string;
 }

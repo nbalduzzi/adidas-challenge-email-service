@@ -1,21 +1,9 @@
 services:
     api:
         build: .
-        depends_on:
-            - mongo
+        container_name: adidas-challenge-email-service
         ports:
-            - "3001:3001"
+            - "3002:3002"
         volumes:
-            - .:/subscription-service
-            - /subscription-service/node_modules
-
-    mongo:
-        image: mongo
-        restart: always
-        container_name: mongo_adidas
-        environment:
-            MONGO_INITDB_DATABASE: adidas
-            MONGO_INITDB_ROOT_USERNAME: adidas
-            MONGO_INITDB_ROOT_PASSWORD: adidas
-        ports:
-            - "27017:27017"
+            - .:/email-service
+            - /email-service/node_modules

@@ -110,6 +110,12 @@ $ docker build . -t adidas-challenge-email-service
 $ docker run -p3002:3002 adidas-challenge-email-service
 ```
 
+### Docker Compose
+
+```bash
+$ docker-compose up
+```
+
 ## Documentation
 
 Swagger documentation only on dev instance: `http:localhost:3002/api`

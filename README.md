@@ -20,6 +20,8 @@ Adidas Challenge Email Service API
 
 2. The `e2e tests` was disabled and will fail if are executed because is all mocked and i i didn't implement a Token Deliver API. I did this in order to follow the challenge instructions where asking to me for `3 microservices` and i don't know if i can create more services than asked to me.
 
+3. I desided not implementing a `Queue consumer` from any technology like `RabbitMQ` or `Redis` to dont adding complex layers on the project, but is a better solution than the http async call from subscriptor service for sending the email, is a better aproach implement a `queue cosumer` with fifo strategy.
+
 ## Security
 
 ### Authorization Header

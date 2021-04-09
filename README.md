@@ -60,6 +60,13 @@ The algorithm used was `HS256` and the secret for hashing the jwt is in `.env` f
 
 Validation pipe added for validate controllers DTO's structure.
 
+## Requirements
+
+1. [NodeJS](https://nodejs.org/es/download/) installed
+
+2. [NVM](https://github.com/nvm-sh/nvm) installed
+
+
 ## Installation
 
 ```bash

@@ -91,9 +91,14 @@ $ npm run start:prod # run on port 3002
 # unit tests
 $ npm run test
 
+# e2e tests
+$ npm run test:e2e
+
 # test coverage
 $ npm run test:cov
 ```
+
+> **Note:** Only run e2e test on `/ping` (health check) endpoint
 
 ## Docker
 
@@ -118,6 +123,21 @@ $ docker-compose up --build --force-recreate
 ## Documentation
 
 Swagger documentation only on dev instance: `http:localhost:3002/api`
+
+## CI/CD Proposal
+
+This pipeline executes on push to any branch
+
+| Step Name | Description | Trigger | Tasks |
+|---|---|---|---|
+| Build | Build image | `Automatic` *(On `branch push`)* | Build Docker image |
+| Test | Testing and security | `Automatic` *(On `build step success`)* | `Parallel` | On `Build` step |
+|---|---|---| `npm audit dependecies` |
+|---|---|---| `unit test` |
+| Deploy `Dev` | Deploy builded image to `Dev` environment | `Automatic` *(On `test step success`)* | Execute command to deploy to `development` environment |
+| Test `e2e` | Check Overall API endpoints on `dev` | `Manual` *(On `deploy dev` step success)* | Execute `e2e` tests |
+| Deploy `Staging` | Deploy builded image to `Staging` environment | `Manual` *(On `deploy dev` step success)* | Execute command to deploy to `staging` environment |
+| Deploy `Production` | Deploy builded image to `Production` environment | `Manual` *(On `deploy dev` step success)* | Execute command to deploy to `production` environment |
 
 ## License
 

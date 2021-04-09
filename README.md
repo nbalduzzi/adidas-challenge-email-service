@@ -146,6 +146,12 @@ This pipeline executes on push to any branch
 | Deploy `Staging` | Deploy builded image to `Staging` environment | `Manual` *(On `deploy dev` step success)* | Execute command to deploy to `staging` environment |
 | Deploy `Production` | Deploy builded image to `Production` environment | `Manual` *(On `deploy dev` step success)* | Execute command to deploy to `production` environment |
 
+## Kubernetes
+
+The `kubernetes` configuration is in `k8s` folder inside the project.
+
+As a Backend Developer, only create the `yml` files for: `secrets`, `config maps` and `deployment`.
+
 ## License
 
 [MIT licensed](LICENSE).

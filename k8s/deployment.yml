@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adidas-challenge-email-service
+  namespace: dev
+  labels:
+    app: adidas-challenge-email-service
+spec:
+  selector:
+    matchLabels:
+      app: adidas-challenge-email-service
+  revisionHistoryLimit: 2
+  replicas: 4
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: adidas-challenge-email-service
+    spec:
+      containers:
+      - image: adidas-challenge-email-service:1.0.0
+        imagePullPolicy: Always
+        name: adidas-challenge-email-api
+        livenessProbe:
+          exec:
+            command:
+            - node
+            - --version
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 3002
+          periodSeconds: 3
+        resources:
+          requests:
+            cpu: 400m
+            memory: 1024Mi
+          limits:
+            cpu: 600m
+            memory: 1280Mi
+        ports:
+          - name: http
+            containerPort: 3002
+        env:
+          - name: SECRET
+            valueFrom:
+              secretKeyRef:
+                name: secrets
+                key: jwt-secret
+          - name: MAX_REQUEST_MS_GAP
+            valueFrom:
+              configMapKeyRef:
+                name: adidas-challenge-email-service
+                key: max-request-ms-gap

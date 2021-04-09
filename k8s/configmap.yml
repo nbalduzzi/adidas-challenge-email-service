@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  max-request-ms-gap: "120000"
+metadata:
+  name: adidas-challenge-email-service
+  namespace: dev

@@ -4,3 +4,9 @@ services:
         container_name: adidas-challenge-email-service
         ports:
             - "3002:3002"
+        networks:
+            - adidas_challenge
+
+networks:
+    adidas_challenge:
+        external: true
